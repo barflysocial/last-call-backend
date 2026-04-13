@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Last Call — Host Dashboard (Truth-Pack Aware)</title>
+<style>
+:root{
+  --bg:#0b0d14; --panel:#131826; --panel2:#171d2d; --line:rgba(255,255,255,.12);
+  --text:#eef2ff; --muted:#a8b1cc; --accent:#ff4f93; --accent2:#ff8bb8;
+  --good:#21c27c; --warn:#ffbf47; --bad:#ff5d6c; --blue:#7eb6ff; --shadow:0 16px 40px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(255,79,147,.18), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(126,182,255,.12), transparent 35%),
+    linear-gradient(180deg,#0c0f17,#090b11 55%,#07080d);
+}
+button,input,select{font:inherit}
+button{
+  border:0;border-radius:14px;color:white;background:linear-gradient(135deg,var(--accent),var(--accent2));
+  padding:12px 14px;font-weight:800;cursor:pointer;box-shadow:0 10px 28px rgba(255,79,147,.25)
+}
+button.secondary{background:rgba(255,255,255,.06);color:var(--text);box-shadow:none;border:1px solid var(--line)}
+button.good{background:linear-gradient(135deg,#28cb88,#159a60);box-shadow:0 10px 28px rgba(21,154,96,.28)}
+button.warn{background:linear-gradient(135deg,#e7a326,#cc7e11);box-shadow:0 10px 28px rgba(204,126,17,.28)}
+button.bad{background:linear-gradient(135deg,#ff6d7c,#d93a4a);box-shadow:0 10px 28px rgba(217,58,74,.28)}
+button:disabled{opacity:.5;cursor:not-allowed;box-shadow:none}
+input,select{width:100%;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);padding:13px 14px;border-radius:14px}
+.app{max-width:1280px;margin:0 auto;padding:20px}
+.hero{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:20px;box-shadow:var(--shadow);margin-bottom:18px}
+.title{font-size:30px;font-weight:900;line-height:1.05}
+.subtitle{margin-top:6px;color:var(--muted);font-size:14px}
+.row{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}
+.panel h2{margin:0 0 12px 0;font-size:20px}
+.grid{display:grid;gap:12px}
+.grid.two{grid-template-columns:1fr 1fr}
+.field{display:flex;flex-direction:column;gap:8px}
+.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.mini{font-size:12px;color:var(--muted);line-height:1.5}
+.session-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);font-size:12px;color:var(--muted);font-weight:800}
+.code{font-size:26px;font-weight:900;letter-spacing:.16em;background:rgba(255,255,255,.06);border:1px solid var(--line);padding:10px 14px;border-radius:16px}
+.status{padding:6px 10px;border-radius:999px;font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;display:inline-block}
+.status.lobby{background:rgba(255,255,255,.08);color:var(--muted)}
+.status.investigation{background:rgba(33,194,124,.14);color:#a9ffd9}
+.status.accusation,.status.accusation_locked{background:rgba(255,191,71,.14);color:#ffe0a0}
+.status.revealed{background:rgba(126,182,255,.16);color:#b8d6ff}
+.tables{display:grid;gap:14px}
+.table-card{background:var(--panel2);border:1px solid var(--line);border-radius:20px;padding:16px}
+.table-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:12px}
+.table-title{font-size:19px;font-weight:900}
+.table-sub{color:var(--muted);font-size:13px;margin-top:4px}
+.table-actions{display:flex;gap:8px;flex-wrap:wrap}
+.claim-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.claim{border:1px solid var(--line);border-radius:16px;padding:12px;background:rgba(255,255,255,.03)}
+.claim .r{font-size:12px;font-weight:900;margin-bottom:6px}
+.claim .p{font-size:12px;color:var(--muted);line-height:1.45}
+.claim.claimed{background:rgba(255,255,255,.06)}
+.players{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
+.players table{width:100%;border-collapse:collapse}
+.players th,.players td{padding:10px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px}
+.players th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+.toast-wrap{position:fixed;top:12px;right:12px;z-index:9999;display:grid;gap:10px}
+.toast{min-width:280px;max-width:360px;background:rgba(18,22,34,.96);border:1px solid rgba(255,255,255,.11);border-radius:16px;padding:12px 14px;box-shadow:var(--shadow)}
+.toast b{display:block;margin-bottom:4px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.reveal-box{margin-top:12px;padding:12px;border:1px solid var(--line);border-radius:16px;background:rgba(126,182,255,.08)}
+@media (max-width: 980px){.row{grid-template-columns:1fr}.claim-grid{grid-template-columns:1fr 1fr}}
+@media (max-width: 640px){.grid.two{grid-template-columns:1fr}.claim-grid{grid-template-columns:1fr}.title{font-size:24px}.code{font-size:22px}}
+</style>
+</head>
+<body>
+<div class="toast-wrap" id="toastWrap"></div>
+<div class="app">
+  <div class="hero">
+    <div class="title">Last Call — Host Dashboard</div>
+    <div class="subtitle">Truth-pack-aware host dashboard for Version A, B, and C live table management.</div>
+    <div class="session-bar" id="activeSessionBar" style="display:none">
+      <span class="pill">Backend <span class="mono" id="backendPill">http://localhost:3000</span></span>
+      <span class="pill">Session Code <span class="code" id="sessionCode">------</span></span>
+      <span class="pill">WebSocket <span id="wsStatus">Disconnected</span></span>
+      <span class="pill">Truth Packs <span id="truthPackList">—</span></span>
+      <button class="secondary" id="copyCodeBtn">Copy Code</button>
+      <button class="secondary" id="refreshSessionBtn">Refresh Session</button>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="panel">
+      <h2>Session Controls</h2>
+      <div class="grid two">
+        <div class="field">
+          <div class="label">Backend Base URL</div>
+          <input id="backendUrl" value="http://localhost:3000" placeholder="http://localhost:3000" />
+        </div>
+        <div class="field">
+          <div class="label">Session Title</div>
+          <input id="sessionTitle" value="Last Call" />
+        </div>
+        <div class="field">
+          <div class="label">Table Count</div>
+          <input id="tableCount" type="number" min="1" max="20" value="3" />
+        </div>
+        <div class="field">
+          <div class="label">Find Existing Session By Code</div>
+          <input id="lookupCode" placeholder="Enter session code" />
+        </div>
+      </div>
+      <div class="session-bar">
+        <button id="createSessionBtn">Create Session</button>
+        <button class="secondary" id="lookupSessionBtn">Find Session</button>
+        <button class="secondary" id="loadTruthPacksBtn">Load Truth Packs</button>
+      </div>
+      <div class="mini" style="margin-top:12px">
+        This dashboard reads truth-pack availability from the backend and shows reveal payloads per table.
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Quick Notes</h2>
+      <div class="grid">
+        <div class="pill">Roles stay fixed</div>
+        <div class="pill">A/B/C assigned per table</div>
+        <div class="pill">Investigation: 30 minutes</div>
+        <div class="pill">Accusation: 15 minutes</div>
+      </div>
+      <div class="mini" style="margin-top:14px">
+        Best flow: create session → players join by code → assign truth packs → start table → monitor submissions → reveal truth by table → reset.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" style="margin-top:18px">
+    <h2>Tables</h2>
+    <div id="tablesWrap" class="tables">
+      <div class="mini">No session loaded yet.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const state = {
+    backendUrl: 'http://localhost:3000',
+    session: null,
+    ws: null,
+    truthPackDebug: null,
+  };
+
+  const el = {
+    toastWrap: document.getElementById('toastWrap'),
+    backendUrl: document.getElementById('backendUrl'),
+    sessionTitle: document.getElementById('sessionTitle'),
+    tableCount: document.getElementById('tableCount'),
+    lookupCode: document.getElementById('lookupCode'),
+    createSessionBtn: document.getElementById('createSessionBtn'),
+    lookupSessionBtn: document.getElementById('lookupSessionBtn'),
+    loadTruthPacksBtn: document.getElementById('loadTruthPacksBtn'),
+    activeSessionBar: document.getElementById('activeSessionBar'),
+    backendPill: document.getElementById('backendPill'),
+    sessionCode: document.getElementById('sessionCode'),
+    wsStatus: document.getElementById('wsStatus'),
+    truthPackList: document.getElementById('truthPackList'),
+    copyCodeBtn: document.getElementById('copyCodeBtn'),
+    refreshSessionBtn: document.getElementById('refreshSessionBtn'),
+    tablesWrap: document.getElementById('tablesWrap'),
+  };
+
+  function toast(title, body='') {
+    const div = document.createElement('div');
+    div.className = 'toast';
+    div.innerHTML = `<b>${escapeHtml(title)}</b><div>${escapeHtml(body)}</div>`;
+    el.toastWrap.appendChild(div);
+    setTimeout(() => { div.style.opacity = '0'; div.style.transform = 'translateY(-6px)'; }, 2800);
+    setTimeout(() => div.remove(), 3300);
+  }
+
+  function escapeHtml(str) {
+    return String(str ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function fmtDate(ms) {
+    if (!ms) return '—';
+    try { return new Date(ms).toLocaleTimeString([], { hour:'numeric', minute:'2-digit', second:'2-digit' }); }
+    catch { return '—'; }
+  }
+
+  function roleLabelFromId(roleId) {
+    const map = { bartender:'Bartender', security:'Security', host:'Karaoke Host', manager:'Manager', ex_lover:'Ex-Lover', sound_tech:'Sound Tech' };
+    return map[roleId] || roleId || '—';
+  }
+
+  function formatSec(sec) {
+    const m = Math.floor(sec / 60), s = sec % 60;
+    return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  }
+
+  async function api(path, opts={}) {
+    const url = `${state.backendUrl}${path}`;
+    const res = await fetch(url, { headers: { 'Content-Type': 'application/json' }, ...opts });
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || `Request failed: ${res.status}`);
+    }
+    return res.json();
+  }
+
+  function wsUrlFromHttp(httpUrl) {
+    const u = new URL(httpUrl);
+    u.protocol = u.protocol === 'https:' ? 'wss:' : 'ws:';
+    u.pathname = '';
+    u.search = '';
+    u.hash = '';
+    return u.toString().replace(/\/$/, '');
+  }
+
+  function availableTruthPacks() {
+    return state.session?.availableTruthPacks || Object.keys(state.truthPackDebug || {}) || ['version_a'];
+  }
+
+  function connectWs() {
+    if (!state.session?.sessionId) return;
+    if (state.ws) { state.ws.close(); state.ws = null; }
+    const url = `${wsUrlFromHttp(state.backendUrl)}?sessionId=${encodeURIComponent(state.session.sessionId)}`;
+    el.wsStatus.textContent = 'Connecting';
+    try {
+      const ws = new WebSocket(url);
+      state.ws = ws;
+      ws.onopen = () => { el.wsStatus.textContent = 'Connected'; };
+      ws.onclose = () => { el.wsStatus.textContent = 'Disconnected'; };
+      ws.onerror = () => { el.wsStatus.textContent = 'Error'; };
+      ws.onmessage = async (event) => {
+        let msg = {};
+        try { msg = JSON.parse(event.data); } catch {}
+        if (msg.type === 'connected') {
+          toast('WebSocket connected', 'Live table updates are on.');
+          return;
+        }
+        if (['table_updated','table_started','player_submitted','table_revealed','table_reset'].includes(msg.type)) {
+          await refreshSession();
+        }
+      };
+    } catch {
+      el.wsStatus.textContent = 'Error';
+    }
+  }
+
+  async function createSession() {
+    state.backendUrl = el.backendUrl.value.trim().replace(/\/$/, '');
+    const data = await api('/api/sessions', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: el.sessionTitle.value.trim() || 'Last Call',
+        tableCount: Number(el.tableCount.value || 1)
+      })
+    });
+    state.session = data;
+    await loadTruthPackDebug();
+    renderSession();
+    connectWs();
+    toast('Session created', `Code: ${data.code}`);
+  }
+
+  async function findSessionByCode() {
+    state.backendUrl = el.backendUrl.value.trim().replace(/\/$/, '');
+    const code = el.lookupCode.value.trim().toUpperCase();
+    if (!code) { toast('Missing code', 'Enter a session code first.'); return; }
+    const data = await api(`/api/sessions/by-code/${encodeURIComponent(code)}`);
+    state.session = data;
+    await loadTruthPackDebug();
+    renderSession();
+    connectWs();
+    toast('Session loaded', `Code: ${data.code}`);
+  }
+
+  async function refreshSession() {
+    if (!state.session?.sessionId) return;
+    const data = await api(`/api/sessions/${encodeURIComponent(state.session.sessionId)}`);
+    state.session = data;
+    renderSession();
+  }
+
+  async function loadTruthPackDebug() {
+    try {
+      state.truthPackDebug = await api('/api/debug/truth-packs');
+    } catch (err) {
+      toast('Truth pack debug unavailable', err.message);
+      state.truthPackDebug = null;
+    }
+    renderSession();
+  }
+
+  async function setTruthPack(tableId, truthPackId) {
+    await api(`/api/sessions/${state.session.sessionId}/tables/${tableId}/truth-pack`, {
+      method: 'POST',
+      body: JSON.stringify({ truthPackId })
+    });
+    toast('Truth pack updated', truthPackId);
+  }
+
+  async function startTable(tableId) {
+    await api(`/api/sessions/${state.session.sessionId}/tables/${tableId}/start`, {
+      method: 'POST',
+      body: JSON.stringify({})
+    });
+    toast('Table started', tableId);
+  }
+
+  async function revealTable(tableId) {
+    const data = await api(`/api/sessions/${state.session.sessionId}/tables/${tableId}/reveal`, {
+      method: 'POST',
+      body: JSON.stringify({})
+    });
+    toast('Truth revealed', `${data.killer} | ${data.truthPackId}`);
+  }
+
+  async function resetTable(tableId) {
+    await api(`/api/sessions/${state.session.sessionId}/tables/${tableId}/reset`, {
+      method: 'POST',
+      body: JSON.stringify({})
+    });
+    toast('Table reset', tableId);
+  }
+
+  function renderSession() {
+    el.backendPill.textContent = state.backendUrl;
+    el.truthPackList.textContent = availableTruthPacks().join(', ');
+    if (!state.session) {
+      el.activeSessionBar.style.display = 'none';
+      el.tablesWrap.innerHTML = '<div class="mini">No session loaded yet.</div>';
+      return;
+    }
+    el.activeSessionBar.style.display = 'flex';
+    el.sessionCode.textContent = state.session.code || '------';
+
+    const tables = state.session.tables || [];
+    if (!tables.length) {
+      el.tablesWrap.innerHTML = '<div class="mini">This session has no tables.</div>';
+      return;
+    }
+
+    el.tablesWrap.innerHTML = tables.map(table => {
+      const phase = table.phase || 'lobby';
+      const submitted = (table.players || []).filter(p => p.submittedAt).length;
+      const joined = (table.players || []).length;
+      const winners = (table.players || []).filter(p => ['solved','perfect_solve'].includes(p.solvedTier)).length;
+      const revealDebug = state.truthPackDebug?.[table.truthPackId]?.reveal;
+
+      return `
+        <div class="table-card">
+          <div class="table-head">
+            <div>
+              <div class="table-title">${escapeHtml(table.label)}</div>
+              <div class="table-sub">Truth Pack: ${escapeHtml(table.truthPackId || 'version_a')} · Started: ${escapeHtml(fmtDate(table.startedAt))} · Reveal: ${escapeHtml(fmtDate(table.revealedAt))}</div>
+              <div style="margin-top:8px">
+                <span class="status ${escapeHtml(phase)}">${escapeHtml(phase)}</span>
+                <span class="pill">Joined ${joined}/6</span>
+                <span class="pill">Submitted ${submitted}</span>
+                <span class="pill">Winners ${winners}</span>
+                <span class="pill">Elapsed ${escapeHtml(formatSec(table.timers?.elapsedSec || 0))}</span>
+              </div>
+            </div>
+            <div class="table-actions">
+              <select data-truth-select="${table.tableId}">
+                ${availableTruthPacks().map(tp => `<option value="${tp}" ${table.truthPackId === tp ? 'selected' : ''}>${tp}</option>`).join('')}
+              </select>
+              <button class="secondary" data-set-truth="${table.tableId}">Set Truth Pack</button>
+              <button class="good" data-start="${table.tableId}">Start</button>
+              <button class="warn" data-reveal="${table.tableId}">Reveal</button>
+              <button class="bad" data-reset="${table.tableId}">Reset</button>
+            </div>
+          </div>
+
+          <div class="claim-grid">
+            ${(table.roleClaims || []).map(role => `
+              <div class="claim ${role.claimed ? 'claimed' : ''}">
+                <div class="r">${escapeHtml(role.roleLabel)}</div>
+                <div class="p">${role.claimed ? escapeHtml(role.playerName || 'Claimed') : 'Open'}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          ${revealDebug ? `
+            <div class="reveal-box">
+              <div class="tiny">Assigned Truth Pack Preview</div>
+              <div class="mini"><strong>Killer:</strong> ${escapeHtml(revealDebug.killer || '—')}<br>
+              <strong>Motive:</strong> ${escapeHtml(revealDebug.motive || '—')}</div>
+            </div>
+          ` : ''}
+
+          <div class="players">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Instagram</th>
+                  <th>Role</th>
+                  <th>Joined</th>
+                  <th>Submitted</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(table.players || []).length ? (table.players || []).map(player => `
+                  <tr>
+                    <td>${escapeHtml(player.playerName)}</td>
+                    <td>${escapeHtml(player.instagramTag || '—')}</td>
+                    <td>${escapeHtml(roleLabelFromId(player.roleId))}</td>
+                    <td>${escapeHtml(fmtDate(player.joinedAt))}</td>
+                    <td>${escapeHtml(player.submittedAt ? fmtDate(player.submittedAt) : '—')}</td>
+                    <td>${escapeHtml(player.solvedTier || '—')}</td>
+                  </tr>
+                `).join('') : `<tr><td colspan="6" class="mini">No players joined yet.</td></tr>`}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    bindTableButtons();
+  }
+
+  function bindTableButtons() {
+    document.querySelectorAll('[data-set-truth]').forEach(btn => {
+      btn.onclick = async () => {
+        const tableId = btn.getAttribute('data-set-truth');
+        const select = document.querySelector(`[data-truth-select="${tableId}"]`);
+        try {
+          await setTruthPack(tableId, select?.value || 'version_a');
+          await refreshSession();
+        } catch (err) {
+          toast('Failed to set truth pack', err.message);
+        }
+      };
+    });
+
+    document.querySelectorAll('[data-start]').forEach(btn => {
+      btn.onclick = async () => {
+        try { await startTable(btn.getAttribute('data-start')); await refreshSession(); }
+        catch (err) { toast('Failed to start table', err.message); }
+      };
+    });
+
+    document.querySelectorAll('[data-reveal]').forEach(btn => {
+      btn.onclick = async () => {
+        try { await revealTable(btn.getAttribute('data-reveal')); await refreshSession(); }
+        catch (err) { toast('Failed to reveal table', err.message); }
+      };
+    });
+
+    document.querySelectorAll('[data-reset]').forEach(btn => {
+      btn.onclick = async () => {
+        if (!confirm('Reset this table? This clears claims and players.')) return;
+        try { await resetTable(btn.getAttribute('data-reset')); await refreshSession(); }
+        catch (err) { toast('Failed to reset table', err.message); }
+      };
+    });
+  }
+
+  function bind() {
+    el.createSessionBtn.onclick = async () => {
+      try { await createSession(); }
+      catch (err) { toast('Create failed', err.message); }
+    };
+
+    el.lookupSessionBtn.onclick = async () => {
+      try { await findSessionByCode(); }
+      catch (err) { toast('Lookup failed', err.message); }
+    };
+
+    el.loadTruthPacksBtn.onclick = async () => {
+      state.backendUrl = el.backendUrl.value.trim().replace(/\/$/, '');
+      await loadTruthPackDebug();
+      toast('Truth packs loaded');
+    };
+
+    el.copyCodeBtn.onclick = async () => {
+      if (!state.session?.code) return;
+      try { await navigator.clipboard.writeText(state.session.code); toast('Session code copied', state.session.code); }
+      catch { toast('Copy failed', 'Your browser blocked clipboard access.'); }
+    };
+
+    el.refreshSessionBtn.onclick = async () => {
+      try { await refreshSession(); toast('Session refreshed'); }
+      catch (err) { toast('Refresh failed', err.message); }
+    };
+  }
+
+  bind();
+})();
+</script>
+</body>
+</html>
