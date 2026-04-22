@@ -1,0 +1,1641 @@
+{
+  "game_id": "last_call_who_killed_the_singer",
+  "title": "Last Call: Who Killed the Singer?",
+  "format": {
+    "players_per_table": 6,
+    "duration_minutes": 45,
+    "investigation_minutes": 30,
+    "accusation_minutes": 15,
+    "ui_style": "smartphone_home_screen",
+    "role_selection_locked_until_end": true,
+    "server_timed_clues": true
+  },
+  "apps": [
+    {
+      "id": "phone",
+      "label": "Phone"
+    },
+    {
+      "id": "messages",
+      "label": "Messages"
+    },
+    {
+      "id": "maps",
+      "label": "Maps"
+    },
+    {
+      "id": "bank",
+      "label": "Bank"
+    },
+    {
+      "id": "photos",
+      "label": "Photos"
+    },
+    {
+      "id": "social",
+      "label": "Social"
+    },
+    {
+      "id": "contacts",
+      "label": "Contacts"
+    },
+    {
+      "id": "notes",
+      "label": "Notes"
+    },
+    {
+      "id": "files",
+      "label": "Files"
+    },
+    {
+      "id": "browser",
+      "label": "Browser"
+    },
+    {
+      "id": "accuse",
+      "label": "Accuse"
+    }
+  ],
+  "roles": [
+    {
+      "id": "bartender",
+      "label": "Bartender",
+      "character_name": "Jax Mercer",
+      "roleplay_vibe": "Fast, social, sharp.",
+      "what_i_know": "I heard Nico pushing people all night. He was trying to make somebody crack.",
+      "what_im_hiding": "I comped drinks I should not have comped.",
+      "what_i_need": "Who Nico was really targeting.",
+      "starting_apps": [
+        "messages",
+        "bank",
+        "contacts"
+      ],
+      "secondary_apps": [
+        "social",
+        "notes"
+      ],
+      "question_first": [
+        "manager",
+        "ex_lover",
+        "host"
+      ],
+      "fill_order": 1
+    },
+    {
+      "id": "security",
+      "label": "Security",
+      "character_name": "Omar Price",
+      "roleplay_vibe": "Short answers. Watchful. Calm, but suspicious.",
+      "what_i_know": "Somebody crossed near staff-only space at the wrong time.",
+      "what_im_hiding": "I stepped away from position briefly.",
+      "what_i_need": "Who used the route during the kill window.",
+      "starting_apps": [
+        "maps",
+        "phone",
+        "files"
+      ],
+      "secondary_apps": [
+        "photos",
+        "notes"
+      ],
+      "question_first": [
+        "sound_tech",
+        "host",
+        "bartender"
+      ],
+      "fill_order": 2
+    },
+    {
+      "id": "host",
+      "label": "Karaoke Host",
+      "character_name": "Lena Sparks",
+      "roleplay_vibe": "Charming, dramatic, always on.",
+      "what_i_know": "The room flow broke at exactly the wrong moment.",
+      "what_im_hiding": "I changed part of the performance order.",
+      "what_i_need": "Who benefited when Nico left the floor.",
+      "starting_apps": [
+        "messages",
+        "photos",
+        "social"
+      ],
+      "secondary_apps": [
+        "phone",
+        "notes"
+      ],
+      "question_first": [
+        "sound_tech",
+        "manager",
+        "bartender"
+      ],
+      "fill_order": 3
+    },
+    {
+      "id": "manager",
+      "label": "Manager",
+      "character_name": "Vivian Cole",
+      "roleplay_vibe": "Controlled, polished, guarded.",
+      "what_i_know": "Nico knew something he should not have known.",
+      "what_im_hiding": "There are venue problems I did not want exposed.",
+      "what_i_need": "Whether this is about money or just looks that way.",
+      "starting_apps": [
+        "bank",
+        "files",
+        "notes"
+      ],
+      "secondary_apps": [
+        "messages",
+        "contacts"
+      ],
+      "question_first": [
+        "bartender",
+        "sound_tech",
+        "security"
+      ],
+      "fill_order": 4
+    },
+    {
+      "id": "ex_lover",
+      "label": "Ex-Lover",
+      "character_name": "Dani Reyes",
+      "roleplay_vibe": "Emotional but controlled. Defensive.",
+      "what_i_know": "Nico thought he had somebody cornered tonight.",
+      "what_im_hiding": "I met with him privately.",
+      "what_i_need": "Who he was really threatening if it was not just me.",
+      "starting_apps": [
+        "messages",
+        "contacts",
+        "notes"
+      ],
+      "secondary_apps": [
+        "phone",
+        "social"
+      ],
+      "question_first": [
+        "bartender",
+        "manager",
+        "sound_tech"
+      ],
+      "fill_order": 5
+    },
+    {
+      "id": "sound_tech",
+      "label": "Sound Tech",
+      "character_name": "Rhea Knox",
+      "roleplay_vibe": "Cool, practical, mildly irritated.",
+      "what_i_know": "I know when the room got loud enough to hide more than people think.",
+      "what_im_hiding": "Nico knew something serious about me.",
+      "what_i_need": "What others can actually place backstage and how much they know.",
+      "starting_apps": [
+        "maps",
+        "phone",
+        "files"
+      ],
+      "secondary_apps": [
+        "photos",
+        "messages"
+      ],
+      "question_first": [
+        "host",
+        "security",
+        "manager"
+      ],
+      "fill_order": 6
+    }
+  ],
+  "shared_accusation_choices": {
+    "killer": [
+      "Bartender",
+      "Security",
+      "Karaoke Host",
+      "Manager",
+      "Ex-Lover",
+      "Sound Tech"
+    ],
+    "motive": [
+      "Nico was about to expose reimbursement fraud and side-money theft",
+      "Nico found internal corruption and was going to expose it publicly",
+      "Nico was using private secrets, humiliation, and emotional blackmail to control someone",
+      "Nico ruined someone's chance to win the karaoke finals",
+      "Nico publicly embarrassed the wrong person and got killed for revenge",
+      "Nico stumbled into a random backstage confrontation"
+    ],
+    "method": [
+      "Backstage confrontation with a weighted stage tool, then staged as an accident",
+      "Confrontation in a restricted area, followed by a redirected cover story",
+      "Private confrontation that turned violent, then staged to blend into bar chaos",
+      "Poisoned drink at the bar",
+      "A public fight that escalated in front of witnesses",
+      "A random drunken fall behind the stage"
+    ],
+    "evidence": [
+      "The financial trail combined with Nico being lured backstage over a fake mic problem",
+      "The internal records motive plus the fact that the first story protected management most",
+      "The secret meeting plus proof that the real motive was private control, not bar politics",
+      "The public argument at the bar",
+      "The deleted story post",
+      "The back hall route by itself"
+    ]
+  },
+  "shared_notifications": [
+    {
+      "title": "Messages",
+      "body": "1 new thread",
+      "app": "messages"
+    },
+    {
+      "title": "Phone",
+      "body": "missed call added",
+      "app": "phone"
+    },
+    {
+      "title": "Maps",
+      "body": "location ping updated",
+      "app": "maps"
+    },
+    {
+      "title": "Bank",
+      "body": "pending charge posted",
+      "app": "bank"
+    },
+    {
+      "title": "Photos",
+      "body": "image synced",
+      "app": "photos"
+    },
+    {
+      "title": "Social",
+      "body": "deleted story captured",
+      "app": "social"
+    },
+    {
+      "title": "Files",
+      "body": "document recovered",
+      "app": "files"
+    },
+    {
+      "title": "Browser",
+      "body": "history fragment restored",
+      "app": "browser"
+    }
+  ],
+  "truth_packs": {
+    "version_a": {
+      "label": "Version A",
+      "killer_role": "sound_tech",
+      "motive": "Nico was about to expose reimbursement fraud and side-money theft",
+      "method": "Backstage confrontation with a weighted stage tool, then staged as an accident",
+      "strongest_evidence": "The financial trail combined with Nico being lured backstage over a fake mic problem",
+      "reveal_copy": "Tonight\u2019s killer was the Sound Tech. Nico found a money trail that never should have existed \u2014 fake reimbursements, side deals, and enough proof to ruin her. He thought he could corner her after finals. Instead, she pulled him backstage with a fake mic problem, confronted him in the hall, and killed him with a weighted stage tool. Then she let the room believe it was chaos, bad luck, and one too many grudges colliding at once.",
+      "timeline": [
+        {
+          "t": 0,
+          "public": null,
+          "notification": null,
+          "entries": [
+            {
+              "role": "bartender",
+              "app": "messages",
+              "content": "8:32 PM | Nico -> Jax | \"Keep pouring.\" \"Tonight gets loud.\""
+            },
+            {
+              "role": "bartender",
+              "app": "bank",
+              "content": "Pending Charge | $24.00 | Velvet Room | 8:41 PM | Two premium shots comped under staff approval"
+            },
+            {
+              "role": "bartender",
+              "app": "contacts",
+              "content": "Nico Vale | Note: Talks too much after tequila"
+            },
+            {
+              "role": "bartender",
+              "app": "notes",
+              "content": "I heard Nico tell somebody, \"Tonight I finally end this.\" He sounded proud, not scared."
+            },
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Staff Route Marker | 8:57 PM | Back service corridor motion flagged"
+            },
+            {
+              "role": "security",
+              "app": "phone",
+              "content": "Missed Call | Host | 8:59 PM | Duration 0:00"
+            },
+            {
+              "role": "security",
+              "app": "files",
+              "content": "incident_template_draft.txt | No details entered yet"
+            },
+            {
+              "role": "security",
+              "app": "notes",
+              "content": "I know somebody crossed near staff-only space at the wrong time. I need to narrow who."
+            },
+            {
+              "role": "host",
+              "app": "photos",
+              "content": "Stage Angle Photo | 8:54 PM | Nico still visible near the main floor shortly before the room flow breaks"
+            },
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "8:48 PM | Lena -> Nico | \"You're up after Troy.\""
+            },
+            {
+              "role": "host",
+              "app": "social",
+              "content": "Story Reaction Spike | 8:46 PM | Finals-night post spikes after Nico's argument"
+            },
+            {
+              "role": "host",
+              "app": "notes",
+              "content": "I know exactly when the room stopped paying attention to the right thing."
+            },
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "staff_reimbursements_march.pdf | One equipment reimbursement appears larger than expected"
+            },
+            {
+              "role": "manager",
+              "app": "bank",
+              "content": "Void Activity Alert | 8:43 PM | Staff comp reversal pending review"
+            },
+            {
+              "role": "manager",
+              "app": "notes",
+              "content": "Nico had no business knowing what he knew about internal money."
+            },
+            {
+              "role": "manager",
+              "app": "contacts",
+              "content": "Colin Wren | Note: Only text. Never call."
+            },
+            {
+              "role": "ex_lover",
+              "app": "messages",
+              "content": "8:44 PM | Nico -> Dani | \"Talk to me before finals.\" \"This ends tonight.\""
+            },
+            {
+              "role": "ex_lover",
+              "app": "contacts",
+              "content": "Nico Vale | Note: Blocked twice. Unblocked tonight."
+            },
+            {
+              "role": "ex_lover",
+              "app": "notes",
+              "content": "He wasn't scared tonight. He thought he had somebody cornered."
+            },
+            {
+              "role": "ex_lover",
+              "app": "phone",
+              "content": "Incoming Call | Nico | 8:50 PM | Duration 0:21"
+            },
+            {
+              "role": "sound_tech",
+              "app": "phone",
+              "content": "Incoming Call | Host | 8:52 PM | Duration 0:43"
+            },
+            {
+              "role": "sound_tech",
+              "app": "maps",
+              "content": "Pinned Location | Stage side service hall"
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "mic_channel_notes.txt | \"Feed glitch if booth handoff delayed.\""
+            },
+            {
+              "role": "sound_tech",
+              "app": "notes",
+              "content": "I know when the room got loud enough to hide a lot."
+            }
+          ]
+        },
+        {
+          "t": 180,
+          "public": null,
+          "notification": {
+            "title": "Bank",
+            "body": "activity posted",
+            "app": "bank"
+          },
+          "entries": [
+            {
+              "role": "bartender",
+              "app": "bank",
+              "content": "Pending Charge | $36.00 | Velvet Room | 8:41 PM | Comped premium shots. Staff code used"
+            },
+            {
+              "role": "bartender",
+              "app": "notes",
+              "content": "I don't remember approving that comp. Somebody pushed something through fast."
+            },
+            {
+              "role": "ex_lover",
+              "app": "messages",
+              "content": "8:45 PM | Nico -> Dani | \"You're not the problem tonight.\""
+            },
+            {
+              "role": "ex_lover",
+              "app": "notes",
+              "content": "That should clear me, but it somehow makes me more nervous."
+            }
+          ]
+        },
+        {
+          "t": 360,
+          "public": null,
+          "notification": {
+            "title": "Phone",
+            "body": "missed call added",
+            "app": "phone"
+          },
+          "entries": [
+            {
+              "role": "security",
+              "app": "phone",
+              "content": "Missed Calls | Unknown Number | 8:58 PM | 2 missed calls"
+            },
+            {
+              "role": "host",
+              "app": "social",
+              "content": "Deleted Story Captured | 8:47 PM | \"Finals night. Somebody's about to crack.\""
+            }
+          ]
+        },
+        {
+          "t": 600,
+          "public": "I saw Nico leave the main floor because somebody told him there was a problem with his mic.",
+          "notification": {
+            "title": "Messages",
+            "body": "New clue unlocked",
+            "app": "messages"
+          },
+          "entries": [
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "8:55 PM | Unknown -> Nico | \"Back hall. Mic issue. Hurry.\""
+            },
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Route Ping | 8:56 PM | Movement detected near stage corridor"
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "booth_log.txt | No documented mic outage entered before Nico left the floor"
+            }
+          ]
+        },
+        {
+          "t": 720,
+          "public": null,
+          "notification": {
+            "title": "Files",
+            "body": "document recovered",
+            "app": "files"
+          },
+          "entries": [
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "equipment_reimbursement_04.pdf | Repair amount does not match listed item"
+            },
+            {
+              "role": "bartender",
+              "app": "contacts",
+              "content": "Saved Contact | \"Don't Use Real Name\" | Number matches current staff network"
+            }
+          ]
+        },
+        {
+          "t": 900,
+          "public": "The scene behind the stage doesn't feel like a simple fall.",
+          "notification": {
+            "title": "Photos",
+            "body": "Scene clue added",
+            "app": "photos"
+          },
+          "entries": [
+            {
+              "role": "security",
+              "app": "photos",
+              "content": "Back Hall Floor Shot | 9:07 PM | Body angle does not match a clean forward collapse"
+            },
+            {
+              "role": "manager",
+              "app": "notes",
+              "content": "If this gets called an accident too fast, somebody needs that story."
+            },
+            {
+              "role": "sound_tech",
+              "app": "maps",
+              "content": "Pinned Route | Shortest path from booth to back hall highlighted"
+            }
+          ]
+        },
+        {
+          "t": 1080,
+          "public": null,
+          "notification": {
+            "title": "Notes",
+            "body": "clue updated",
+            "app": "notes"
+          },
+          "entries": [
+            {
+              "role": "ex_lover",
+              "app": "notes",
+              "content": "He told me, \"After tonight, she's done.\" He did not mean me."
+            },
+            {
+              "role": "bartender",
+              "app": "messages",
+              "content": "Jax personal note | I heard Nico say \"she's finished\" at the bar. He was talking money, not heartbreak."
+            }
+          ]
+        },
+        {
+          "t": 1200,
+          "public": "Nico wasn't killed over a public fight. He was killed over something he knew.",
+          "notification": {
+            "title": "Files",
+            "body": "New evidence added",
+            "app": "files"
+          },
+          "entries": [
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "reimbursement_summary.csv | Repeated equipment claims trace back to one staff lane"
+            },
+            {
+              "role": "host",
+              "app": "photos",
+              "content": "Stage Timestamp | 8:54 PM | Nico last visible before sound swell"
+            },
+            {
+              "role": "sound_tech",
+              "app": "bank",
+              "content": "Deposit Alert | Unusual recent transfer appears in linked financial snapshot"
+            }
+          ]
+        },
+        {
+          "t": 1380,
+          "public": null,
+          "notification": {
+            "title": "Browser",
+            "body": "history fragment restored",
+            "app": "browser"
+          },
+          "entries": [
+            {
+              "role": "security",
+              "app": "browser",
+              "content": "Recent Search Recovered | back service hall mic access"
+            },
+            {
+              "role": "bartender",
+              "app": "bank",
+              "content": "Comp Reversal Posted | 9:14 PM | Earlier premium-shot comp reversed after death discovery"
+            }
+          ]
+        },
+        {
+          "t": 1500,
+          "public": "The killer had reason to pull Nico backstage and reason to keep him quiet before finals ended.",
+          "notification": {
+            "title": "Notes",
+            "body": "New clue added",
+            "app": "notes"
+          },
+          "entries": [
+            {
+              "role": "ex_lover",
+              "app": "notes",
+              "content": "He was hunting one person tonight. I know that now."
+            },
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "internal_flag_memo.txt | Fraud concern tied to equipment claims"
+            }
+          ]
+        },
+        {
+          "t": 1620,
+          "public": null,
+          "notification": {
+            "title": "Messages",
+            "body": "final private clue",
+            "app": "messages"
+          },
+          "entries": [
+            {
+              "role": "sound_tech",
+              "app": "messages",
+              "content": "8:55 PM | Nico -> Unknown | \"Fine. Back hall. Don't waste my time.\""
+            },
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Movement Window Narrowed | 8:56-9:01 PM | Only one viable backstage route fits"
+            }
+          ]
+        },
+        {
+          "t": 1800,
+          "public": "The killer had backstage access, financial motive, and a reason to invent a mic problem.",
+          "notification": {
+            "title": "Files",
+            "body": "Final evidence unlocked",
+            "app": "files"
+          },
+          "entries": []
+        }
+      ],
+      "level_id": 1,
+      "level_label": "Level 1",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    "version_b": {
+      "label": "Version B",
+      "killer_role": "manager",
+      "motive": "Nico found internal corruption and was going to expose it publicly",
+      "method": "Confrontation in a restricted area, followed by a redirected cover story",
+      "strongest_evidence": "The internal records motive plus the fact that the first story protected management most",
+      "reveal_copy": "Tonight\u2019s killer was the Manager. Nico got too close to what was really happening inside this bar \u2014 comp abuse, payroll manipulation, hidden financial rot. He thought he could drag it into the light during finals. Vivian knew exactly what would happen if he did. She confronted him, killed him, and then used the confusion of the room to point suspicion anywhere but upward.",
+      "replacements": {
+        "0": [
+          {
+            "role": "bartender",
+            "app": "messages",
+            "content": "8:32 PM | Nico -> Jax | \"Watch what happens when people get scared.\""
+          },
+          {
+            "role": "manager",
+            "app": "notes",
+            "content": "Nico thought he understood this place. He didn't."
+          },
+          {
+            "role": "ex_lover",
+            "app": "messages",
+            "content": "8:44 PM | Nico -> Dani | \"Tonight isn't about us.\""
+          },
+          {
+            "role": "sound_tech",
+            "app": "files",
+            "content": "booth_notes.txt | If this turns into a backstage witch hunt, that helps the wrong person."
+          }
+        ],
+        "180": [
+          {
+            "role": "bartender",
+            "app": "bank",
+            "content": "Comp Activity Alert | Multiple drink comps tied to management override"
+          },
+          {
+            "role": "ex_lover",
+            "app": "contacts",
+            "content": "Saved Contact Note | He wasn't hiding me. He was hiding somebody else."
+          }
+        ],
+        "360": [
+          {
+            "role": "security",
+            "app": "phone",
+            "content": "Recent Call | Nico <-> Manager | 8:49 PM | Duration 0:18"
+          },
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Comment Thread Spike | Finals post derailed after backstage rumor starts"
+          }
+        ],
+        "600": {
+          "public": "I heard Nico tell somebody, \"You don't get to bury this anymore.\"",
+          "entries": [
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "payroll_adjustments.pdf | Corrections hidden under non-payroll labels"
+            },
+            {
+              "role": "bartender",
+              "app": "messages",
+              "content": "He sounded angry, not emotional."
+            },
+            {
+              "role": "sound_tech",
+              "app": "maps",
+              "content": "Everybody is going to blame backstage first. That feels too easy."
+            }
+          ]
+        },
+        "720": [
+          {
+            "role": "host",
+            "app": "notes",
+            "content": "The finals order changed in a way I didn't choose on my own."
+          },
+          {
+            "role": "security",
+            "app": "maps",
+            "content": "There's no clean reason for management to be near that route at that time."
+          }
+        ],
+        "900": {
+          "public": "The loudest suspect may not be the right suspect.",
+          "entries": [
+            {
+              "role": "ex_lover",
+              "app": "messages",
+              "content": "He told me tonight wasn't about us."
+            },
+            {
+              "role": "bartender",
+              "app": "social",
+              "content": "Everybody's watching the wrong drama."
+            }
+          ]
+        },
+        "1080": [
+          {
+            "role": "manager",
+            "app": "bank",
+            "content": "Irregular Transfer Pattern | Internal money movement does not match shift needs"
+          },
+          {
+            "role": "sound_tech",
+            "app": "files",
+            "content": "booth_notes.txt | No real tech emergency required Nico backstage"
+          }
+        ],
+        "1200": {
+          "public": "The killer had something to lose if Nico went public in front of the room.",
+          "entries": [
+            {
+              "role": "security",
+              "app": "photos",
+              "content": "Scene angle doesn't support a random public escalation."
+            },
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "The room distraction helped somebody, and not by accident."
+            },
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "Authority appears to have shaped the first explanation."
+            }
+          ]
+        },
+        "1380": [
+          {
+            "role": "bartender",
+            "app": "contacts",
+            "content": "A staff contact is marked \"do not text after shift.\""
+          },
+          {
+            "role": "ex_lover",
+            "app": "notes",
+            "content": "This is not about heartbreak. It's about exposure."
+          }
+        ],
+        "1500": {
+          "public": "The murder protected something inside the venue.",
+          "entries": [
+            {
+              "role": "sound_tech",
+              "app": "browser",
+              "content": "Recovered Search | how long does payroll correction history stay visible"
+            },
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Route logic points to somebody who expected not to be questioned."
+            }
+          ]
+        },
+        "1620": [
+          {
+            "role": "host",
+            "app": "photos",
+            "content": "Public timeline gap is now locked."
+          },
+          {
+            "role": "bartender",
+            "app": "bank",
+            "content": "Transaction timestamp places the wrong authority figure in the wrong place."
+          }
+        ],
+        "1800": {
+          "public": "The killer had venue authority, corruption motive, and the most to gain from redirecting suspicion."
+        }
+      },
+      "level_id": 2,
+      "level_label": "Level 2",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    "version_c": {
+      "label": "Version C",
+      "killer_role": "ex_lover",
+      "motive": "Nico was using private secrets, humiliation, and emotional blackmail to control someone",
+      "method": "Private confrontation that turned violent, then staged to blend into bar chaos",
+      "strongest_evidence": "The secret meeting plus proof that the real motive was private control, not bar politics",
+      "reveal_copy": "Tonight\u2019s killer was the Ex-Lover. Nico had been using private secrets like weapons. He humiliated, blackmailed, and controlled the people closest to him because he thought they would never push back. Tonight he pushed too far. The meeting was private, the confrontation was real, and what happened next was not an accident.",
+      "replacements": {
+        "0": [
+          {
+            "role": "bartender",
+            "app": "messages",
+            "content": "8:32 PM | Nico -> Jax | \"Pour something strong. Tonight gets ugly.\""
+          },
+          {
+            "role": "manager",
+            "app": "files",
+            "content": "internal_memo.txt | Money problems exist, but this room feels hotter than accounting."
+          },
+          {
+            "role": "ex_lover",
+            "app": "notes",
+            "content": "He thought he owned me because he knew what I'd never want said out loud."
+          }
+        ],
+        "180": [
+          {
+            "role": "ex_lover",
+            "app": "messages",
+            "content": "8:44 PM | Nico -> Dani | \"Come talk to me before finals.\""
+          },
+          {
+            "role": "bartender",
+            "app": "contacts",
+            "content": "I know who drank with him. That doesn't mean I know who mattered."
+          }
+        ],
+        "360": [
+          {
+            "role": "security",
+            "app": "maps",
+            "content": "This route doesn't look like staff access first. It looks like a private meeting route."
+          },
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Story reactions spike after a personal argument clip spreads."
+          }
+        ],
+        "600": {
+          "public": "Nico had a private meeting just before he died.",
+          "entries": [
+            {
+              "role": "ex_lover",
+              "app": "notes",
+              "content": "He saved the cruelest things for when nobody else could hear."
+            },
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "He left the floor for someone, not just for a tech problem."
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "Initial backstage assumptions are weaker than they look."
+            }
+          ]
+        },
+        "720": [
+          {
+            "role": "bartender",
+            "app": "messages",
+            "content": "I heard Nico say, \"You won't do a damn thing.\" That sounds worse now."
+          },
+          {
+            "role": "manager",
+            "app": "files",
+            "content": "Money problems exist, but they don't feel central."
+          }
+        ],
+        "900": {
+          "public": "The scene was staged to make people chase the wrong motive.",
+          "entries": [
+            {
+              "role": "security",
+              "app": "photos",
+              "content": "Body position does not match the first emotional story people want to tell."
+            },
+            {
+              "role": "ex_lover",
+              "app": "contacts",
+              "content": "Nico had Dani saved under a name she never would have chosen."
+            }
+          ]
+        },
+        "1080": [
+          {
+            "role": "sound_tech",
+            "app": "maps",
+            "content": "Backstage can explain confusion, but not the real meeting."
+          },
+          {
+            "role": "bartender",
+            "app": "social",
+            "content": "The online drama is real, but it is not the murder motive."
+          }
+        ],
+        "1200": {
+          "public": "This murder was about control, humiliation, and what somebody knew in private.",
+          "entries": [
+            {
+              "role": "manager",
+              "app": "notes",
+              "content": "Nico used secrets like weapons."
+            },
+            {
+              "role": "host",
+              "app": "photos",
+              "content": "My timestamps prove he left willingly at first."
+            },
+            {
+              "role": "ex_lover",
+              "app": "messages",
+              "content": "He didn't think I was dangerous. That was his mistake."
+            }
+          ]
+        },
+        "1380": [
+          {
+            "role": "security",
+            "app": "phone",
+            "content": "Last short call does not support a staff trap."
+          },
+          {
+            "role": "sound_tech",
+            "app": "browser",
+            "content": "Recovered Search | how to delete a text thread permanently"
+          }
+        ],
+        "1500": {
+          "public": "The killer knew Nico personally enough to meet privately and move him without force.",
+          "entries": [
+            {
+              "role": "bartender",
+              "app": "contacts",
+              "content": "The person closest to Nico knew a version of him the room never saw."
+            },
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "Money explains tension, not the killing."
+            }
+          ]
+        },
+        "1620": [
+          {
+            "role": "ex_lover",
+            "app": "notes",
+            "content": "I know what he held over me. The question is whether anyone else can prove it."
+          },
+          {
+            "role": "host",
+            "app": "messages",
+            "content": "The meeting was arranged, and it was not about finals."
+          }
+        ],
+        "1800": {
+          "public": "The killer was protecting themselves from what Nico could expose in private."
+        }
+      },
+      "level_id": 3,
+      "level_label": "Level 3",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    "version_d": {
+      "label": "Version D",
+      "killer_role": "bartender",
+      "motive": "Nico publicly embarrassed the wrong person and got killed for revenge",
+      "method": "Poisoned drink at the bar",
+      "strongest_evidence": "The public argument at the bar",
+      "reveal_copy": "Tonight\u2019s killer was the Bartender. Nico humiliated the wrong person in a room full of witnesses, then kept pressing after he should have backed off. Jax knew exactly what Nico was drinking, exactly when he would go back for another round, and exactly how to make the death look like one more piece of chaos from finals night. The loudest clue was right in front of everyone \u2014 the argument at the bar that turned personal.",
+      "replacements": {
+        "0": [
+          {
+            "role": "bartender",
+            "app": "messages",
+            "content": "8:32 PM | Nico -> Jax | \"You still mad about last month?\""
+          },
+          {
+            "role": "bartender",
+            "app": "notes",
+            "content": "He laughed at me in front of half the room and thought I was supposed to smile through it."
+          },
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Story Capture | 8:46 PM | Nico and Jax arguing at the bar before finals restarted"
+          },
+          {
+            "role": "manager",
+            "app": "notes",
+            "content": "Whatever happened at the bar got ugly before the body ever dropped."
+          }
+        ],
+        "180": [
+          {
+            "role": "bartender",
+            "app": "bank",
+            "content": "Tab Snapshot | Nico closed one tab, then reopened a second round at 8:41 PM"
+          },
+          {
+            "role": "ex_lover",
+            "app": "messages",
+            "content": "8:45 PM | Nico -> Dani | \"Not now. The bar thing comes first.\""
+          }
+        ],
+        "360": [
+          {
+            "role": "security",
+            "app": "phone",
+            "content": "Missed Call | Bar line | 8:58 PM | Caller hung up after one ring"
+          },
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Deleted Story Captured | 8:47 PM | \"That fight at the bar is going to end badly.\""
+          }
+        ],
+        "600": {
+          "public": "I saw Nico go back toward the bar after a brutal argument, not because of a mic problem.",
+          "entries": [
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "8:55 PM | Floor note | Nico went back toward the service end of the bar after the argument"
+            },
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Route Ping | 8:56 PM | Movement shows Nico stopping at the bar before he disappeared"
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "booth_log.txt | No booth issue explains why Nico left the floor"
+            }
+          ]
+        },
+        "720": [
+          {
+            "role": "manager",
+            "app": "files",
+            "content": "incident_note.txt | Witnesses confirm a heated exchange between Nico and the bartender"
+          },
+          {
+            "role": "bartender",
+            "app": "contacts",
+            "content": "Saved Contact | Nico Vale | Note: \"Thought I forgot what he said\""
+          }
+        ],
+        "900": {
+          "public": "The body doesn\u2019t fit a clean accident, and the fight at the bar matters more than people wanted to admit.",
+          "entries": [
+            {
+              "role": "security",
+              "app": "photos",
+              "content": "Back Hall Floor Shot | 9:07 PM | Collapse pattern looks wrong for a simple stumble"
+            },
+            {
+              "role": "manager",
+              "app": "notes",
+              "content": "Everyone keeps saying backstage. I keep thinking about the bar first."
+            },
+            {
+              "role": "sound_tech",
+              "app": "maps",
+              "content": "Pinned Route | Nico\u2019s last stop before the hall lines up with the bar path"
+            }
+          ]
+        },
+        "1080": [
+          {
+            "role": "ex_lover",
+            "app": "notes",
+            "content": "He wasn\u2019t scared of me tonight. He was taunting somebody else on purpose."
+          },
+          {
+            "role": "bartender",
+            "app": "messages",
+            "content": "Jax personal note | He called me pathetic in front of customers and ordered another drink like nothing happened."
+          }
+        ],
+        "1200": {
+          "public": "This wasn\u2019t about hidden books or secret leverage. It was personal, loud, and sitting out in the open.",
+          "entries": [
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "witness_summary.txt | Multiple guests heard Nico and Jax trade threats at the bar"
+            },
+            {
+              "role": "host",
+              "app": "photos",
+              "content": "Stage Timestamp | 8:54 PM | Nico visible near the bar, not heading backstage for a tech issue"
+            },
+            {
+              "role": "bartender",
+              "app": "bank",
+              "content": "Drink Audit | Final drink in Nico\u2019s hand came from the same bar lane tied to Jax"
+            }
+          ]
+        },
+        "1380": [
+          {
+            "role": "security",
+            "app": "browser",
+            "content": "Recent Search Recovered | bar poison symptoms fast alcohol onset"
+          },
+          {
+            "role": "bartender",
+            "app": "bank",
+            "content": "Comp Reversal Posted | 9:14 PM | Earlier round linked to Nico was quietly adjusted"
+          }
+        ],
+        "1500": {
+          "public": "The killer didn\u2019t need a fake tech emergency. They needed access to Nico\u2019s drink and a reason to make the room look somewhere else.",
+          "entries": [
+            {
+              "role": "ex_lover",
+              "app": "notes",
+              "content": "If you follow the argument, the answer gets smaller."
+            },
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "guest_statement.txt | \"They were fighting at the bar, then Nico drank anyway.\""
+            }
+          ]
+        },
+        "1620": [
+          {
+            "role": "bartender",
+            "app": "messages",
+            "content": "Draft unsent | \"He had it coming.\""
+          },
+          {
+            "role": "security",
+            "app": "maps",
+            "content": "Movement Window Narrowed | 8:56-9:01 PM | Nico\u2019s bar stop is the clearest last controlled contact"
+          }
+        ],
+        "1800": {
+          "public": "The killer had access to Nico\u2019s drink, a public reason to hate him, and the chance to hide murder under finals-night chaos."
+        }
+      },
+      "level_id": 4,
+      "level_label": "Level 4",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    "version_e": {
+      "label": "Version E",
+      "killer_role": "security",
+      "motive": "Nico stumbled into a random backstage confrontation",
+      "method": "A random drunken fall behind the stage",
+      "strongest_evidence": "The back hall route by itself",
+      "reveal_copy": "Tonight\u2019s killer was Security. This was the messiest truth of the night: Nico walked into the wrong space at the wrong time and pushed the wrong person. Omar was already on edge, already covering things he didn\u2019t want anyone else seeing, and the confrontation in the hall went bad fast. What looked like a drunken fall was a cover born out of panic. The route itself told the story \u2014 Nico died where only one person was supposed to control access.",
+      "replacements": {
+        "0": [
+          {
+            "role": "security",
+            "app": "notes",
+            "content": "Nobody was supposed to be in that corridor when Nico came through."
+          },
+          {
+            "role": "security",
+            "app": "maps",
+            "content": "Staff Route Marker | 8:57 PM | Unauthorized movement near restricted hall"
+          },
+          {
+            "role": "manager",
+            "app": "notes",
+            "content": "Security looked rattled before the room even knew Nico was down."
+          }
+        ],
+        "180": [
+          {
+            "role": "security",
+            "app": "phone",
+            "content": "Missed Call | Unknown | 8:58 PM | 0:00"
+          },
+          {
+            "role": "bartender",
+            "app": "notes",
+            "content": "I kept thinking Nico was heading somewhere he shouldn\u2019t have been."
+          }
+        ],
+        "360": [
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Deleted Story Captured | 8:47 PM | \"Somebody just disappeared into the back hall.\""
+          },
+          {
+            "role": "security",
+            "app": "browser",
+            "content": "Recent Search Recovered | staff corridor camera blind spots"
+          }
+        ],
+        "600": {
+          "public": "I saw Nico leave the main floor because someone with authority pushed him away from the back hall.",
+          "entries": [
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Route Ping | 8:56 PM | Nico redirected toward restricted hall entrance"
+            },
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "8:55 PM | Floor note | No mic issue called in before Nico vanished"
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "booth_log.txt | No sound problem explains the hall movement"
+            }
+          ]
+        },
+        "720": [
+          {
+            "role": "security",
+            "app": "photos",
+            "content": "Hall Frame | Camera catch shows Nico near the restricted door seconds before he died"
+          },
+          {
+            "role": "manager",
+            "app": "files",
+            "content": "shift_note.txt | Security was the last assigned person covering that route"
+          }
+        ],
+        "900": {
+          "public": "The scene behind the stage looks less like a mystery lure and more like a confrontation that went wrong in a restricted place.",
+          "entries": [
+            {
+              "role": "security",
+              "app": "photos",
+              "content": "Back Hall Floor Shot | 9:07 PM | Body angle fits a violent shove more than a stumble"
+            },
+            {
+              "role": "sound_tech",
+              "app": "maps",
+              "content": "Pinned Route | The hall path matters more than the booth tonight"
+            },
+            {
+              "role": "bartender",
+              "app": "notes",
+              "content": "Nobody at the bar pulled him. The hall did."
+            }
+          ]
+        },
+        "1080": [
+          {
+            "role": "ex_lover",
+            "app": "notes",
+            "content": "This wasn\u2019t about me. He walked straight into somebody else\u2019s problem."
+          },
+          {
+            "role": "security",
+            "app": "messages",
+            "content": "Draft unsent | \"He should have stayed out of the corridor.\""
+          }
+        ],
+        "1200": {
+          "public": "This wasn\u2019t about long-planned blackmail or hidden books. It started as the wrong encounter in the wrong place.",
+          "entries": [
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "route_access_report.txt | Only one staff lane fully controls that hall window"
+            },
+            {
+              "role": "host",
+              "app": "photos",
+              "content": "Stage Timestamp | 8:54 PM | Nico still on floor shortly before restricted-hall movement"
+            },
+            {
+              "role": "security",
+              "app": "notes",
+              "content": "If people focus on motive, they miss the route."
+            }
+          ]
+        },
+        "1380": [
+          {
+            "role": "security",
+            "app": "browser",
+            "content": "Recent Search Recovered | fall head injury back hall concrete"
+          },
+          {
+            "role": "bartender",
+            "app": "bank",
+            "content": "Comp Reversal Posted | 9:14 PM | Nothing at the bar explains the death timeline"
+          }
+        ],
+        "1500": {
+          "public": "The killer didn\u2019t need Nico to trust them. They only needed him in the wrong corridor long enough to lose control.",
+          "entries": [
+            {
+              "role": "ex_lover",
+              "app": "messages",
+              "content": "8:45 PM | Nico -> Dani | \"If I\u2019m gone, I\u2019m probably chasing the wrong thing.\""
+            },
+            {
+              "role": "manager",
+              "app": "notes",
+              "content": "Everything keeps circling the hallway, not the stage."
+            }
+          ]
+        },
+        "1620": [
+          {
+            "role": "security",
+            "app": "maps",
+            "content": "Movement Window Narrowed | 8:56-9:01 PM | Only one viable route and one controlling post fits"
+          },
+          {
+            "role": "sound_tech",
+            "app": "files",
+            "content": "corridor_note.txt | The route itself is the strongest clue left standing"
+          }
+        ],
+        "1800": {
+          "public": "The killer controlled the back hall, lost control during a confrontation, and let everyone call it a fall."
+        }
+      },
+      "level_id": 5,
+      "level_label": "Level 5",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    "version_f": {
+      "label": "Version F",
+      "killer_role": "host",
+      "motive": "Nico ruined someone's chance to win the karaoke finals",
+      "method": "A public fight that escalated in front of witnesses",
+      "strongest_evidence": "The deleted story post",
+      "reveal_copy": "Tonight\u2019s killer was the Karaoke Host. Finals night was supposed to belong to Lena \u2014 the room, the pacing, the show itself. Nico blew that up. He meddled with the running order, turned the crowd, and threatened to ruin the night on purpose. The confrontation wasn\u2019t hidden for long. It started out in the open, carried into the chaos, and by the time the room realized what had happened, Lena had already buried the truth under the noise of her own event. The deleted story post was the tell: she knew exactly when the night turned and why.",
+      "replacements": {
+        "0": [
+          {
+            "role": "host",
+            "app": "notes",
+            "content": "I built this finals night. Nico treated it like something he could wreck just to prove a point."
+          },
+          {
+            "role": "host",
+            "app": "messages",
+            "content": "8:48 PM | Lena -> Nico | \"Do not change my lineup again.\""
+          },
+          {
+            "role": "bartender",
+            "app": "notes",
+            "content": "Whatever was happening between Nico and the host felt bigger than flirting or stage nerves."
+          },
+          {
+            "role": "manager",
+            "app": "notes",
+            "content": "If finals collapsed tonight, the host had more to lose than anybody."
+          }
+        ],
+        "180": [
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Story Draft | \"Some people don\u2019t deserve this stage.\""
+          },
+          {
+            "role": "sound_tech",
+            "app": "files",
+            "content": "set_order_note.txt | Running order dispute flagged before finals resumed"
+          }
+        ],
+        "360": [
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Deleted Story Captured | 8:47 PM | \"He\u2019s not stealing this night from me.\""
+          },
+          {
+            "role": "security",
+            "app": "phone",
+            "content": "Incoming Call | Host | 8:59 PM | Duration 0:12"
+          }
+        ],
+        "600": {
+          "public": "I saw Nico leave the main floor after somebody told him the finals order had changed and he needed to come backstage now.",
+          "entries": [
+            {
+              "role": "host",
+              "app": "messages",
+              "content": "8:55 PM | Lena -> Nico | \"Back hall. We settle the finals order now.\""
+            },
+            {
+              "role": "security",
+              "app": "maps",
+              "content": "Route Ping | 8:56 PM | Nico movement aligns with host-side stage path"
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "booth_log.txt | No booth issue called in before Nico disappeared"
+            }
+          ]
+        },
+        "720": [
+          {
+            "role": "manager",
+            "app": "files",
+            "content": "event_notes.txt | Finals order dispute centered on Lena and Nico"
+          },
+          {
+            "role": "host",
+            "app": "photos",
+            "content": "Backstage selfie cache | Lena still using story mode minutes before death window"
+          }
+        ],
+        "900": {
+          "public": "The scene behind the stage feels tied to finals-night chaos, not hidden financial motives.",
+          "entries": [
+            {
+              "role": "security",
+              "app": "photos",
+              "content": "Back Hall Floor Shot | 9:07 PM | Signs of struggle fit a loud confrontation, not a silent setup"
+            },
+            {
+              "role": "bartender",
+              "app": "notes",
+              "content": "People heard them before they lost sight of them."
+            },
+            {
+              "role": "sound_tech",
+              "app": "maps",
+              "content": "Pinned Route | Stage-side path matters more than booth access"
+            }
+          ]
+        },
+        "1080": [
+          {
+            "role": "ex_lover",
+            "app": "notes",
+            "content": "He wasn\u2019t blackmailing Lena. He was humiliating her and threatening to wreck finals."
+          },
+          {
+            "role": "host",
+            "app": "messages",
+            "content": "Draft unsent | \"You were not taking this from me.\""
+          }
+        ],
+        "1200": {
+          "public": "This wasn\u2019t about hidden money or private leverage. It was about who controlled finals night once the crowd turned.",
+          "entries": [
+            {
+              "role": "manager",
+              "app": "files",
+              "content": "crowd_report.txt | Witnesses heard Lena and Nico fighting about the show before he vanished"
+            },
+            {
+              "role": "host",
+              "app": "photos",
+              "content": "Deleted Story Cache | Timestamp lines up with the moment the night turned against her"
+            },
+            {
+              "role": "security",
+              "app": "notes",
+              "content": "If you follow the performance order dispute, the motive gets obvious fast"
+            }
+          ]
+        },
+        "1380": [
+          {
+            "role": "host",
+            "app": "social",
+            "content": "Deleted Story Metadata | 8:47 PM | Story removed after death discovery"
+          },
+          {
+            "role": "bartender",
+            "app": "bank",
+            "content": "Tab Note | Nothing on the bar side explains the fight that everyone heard"
+          }
+        ],
+        "1500": {
+          "public": "The killer needed Nico out of the way before finals ended \u2014 and the crowd already heard why.",
+          "entries": [
+            {
+              "role": "manager",
+              "app": "notes",
+              "content": "She needed the night back under control before the room saw her lose it."
+            },
+            {
+              "role": "sound_tech",
+              "app": "files",
+              "content": "show_control_note.txt | If Nico stayed, finals night belonged to chaos, not the host"
+            }
+          ]
+        },
+        "1620": [
+          {
+            "role": "host",
+            "app": "messages",
+            "content": "8:55 PM | Nico -> Lena | \"Then come say it to my face.\""
+          },
+          {
+            "role": "security",
+            "app": "maps",
+            "content": "Movement Window Narrowed | 8:56-9:01 PM | Stage-side confrontation path fits best"
+          }
+        ],
+        "1800": {
+          "public": "The killer had a finals-night motive, a direct confrontation with Nico, and a deleted post that gave away the emotional truth."
+        }
+      },
+      "level_id": 6,
+      "level_label": "Level 6",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    }
+  },
+  "results": {
+    "perfect_solve": "Case Solved\nYou got the killer, motive, method, and strongest evidence right.",
+    "solved": "Case Solved\nYou identified the killer and built a strong case.",
+    "partial": "Close, but incomplete\nYou found part of the truth, but not enough to close the case.",
+    "failed": "Case Unsolved\nThe room got loud, and the truth slipped past you."
+  },
+  "share_templates": {
+    "caption_no_ig": "[Player Name] solved Last Call: Who Killed the Singer? at [Venue Name]. #BarFlyMystery #[RoleName]",
+    "caption_with_ig": "[Player Name] ([InstagramTag]) solved Last Call: Who Killed the Singer? at [Venue Name]. #BarFlyMystery #[RoleName]"
+  },
+  "team_fill_order": [
+    "bartender",
+    "security",
+    "host",
+    "manager",
+    "ex_lover",
+    "sound_tech"
+  ],
+  "levels": [
+    {
+      "truth_pack_id": "version_a",
+      "level_id": 1,
+      "level_label": "Level 1",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    {
+      "truth_pack_id": "version_b",
+      "level_id": 2,
+      "level_label": "Level 2",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    {
+      "truth_pack_id": "version_c",
+      "level_id": 3,
+      "level_label": "Level 3",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    {
+      "truth_pack_id": "version_d",
+      "level_id": 4,
+      "level_label": "Level 4",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    {
+      "truth_pack_id": "version_e",
+      "level_id": 5,
+      "level_label": "Level 5",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    },
+    {
+      "truth_pack_id": "version_f",
+      "level_id": 6,
+      "level_label": "Level 6",
+      "difficulty": "3/5",
+      "difficulty_label": "Detective"
+    }
+  ]
+}
