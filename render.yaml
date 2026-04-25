@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: last-call-backend
-    env: node
-    rootDir: .
-    buildCommand: npm install
-    startCommand: npm start
-    autoDeploy: true
